@@ -1,6 +1,6 @@
 ## Documentação do Projeto Terminal de Busca
 
-![Imagem do Terminal](Imagemterminal.jpg){:width="20px" height="20px"}
+![Imagem do Terminal](Imagemterminal.jpg)
 
 ### TerminalDeBuscaApplication
 
