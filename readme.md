@@ -1,8 +1,17 @@
-## Documentação do Projeto Terminal de Busca
+## Sumário
+
+- [Documentação do Projeto Terminal de Busca](#documentação-do-projeto-terminal-de-busca)
+    - [TerminalDeBuscaApplication](#terminaldebuscaapplication)
+    - [Item](#item)
+    - [ItemRepository](#itemrepository)
+    - [ItemController](#itemcontroller)
+    - [TerminalDeBuscaApplicationTests](#terminaldebuscaapplicationtests)
+
+## <span style="color:blue">Documentação do Projeto Terminal de Busca</span>
 
 ![Imagem do Terminal](Imagemterminal2.jpg)
 
-### TerminalDeBuscaApplication
+### <span style="color:green">TerminalDeBuscaApplication</span>
 
 **Descrição:**  
 A classe principal que inicia a aplicação Spring Boot.
@@ -13,7 +22,7 @@ Contém o método `main`, ponto de entrada da aplicação.
 **Anotações:**
 - `@SpringBootApplication`: Indica uma aplicação Spring Boot.
 
-### Item
+### <span style="color:green">Item</span>
 
 **Descrição:**  
 Representa um item com identificador, nome e preço. É uma entidade JPA mapeada para uma tabela de banco de dados.
@@ -31,7 +40,7 @@ Métodos getter e setter para acessar e modificar os atributos.
 - `@Id`: Especifica o identificador da entidade.
 - `@GeneratedValue`: Define a estratégia de geração do identificador.
 
-### ItemRepository
+### <span style="color:green">ItemRepository</span>
 
 **Descrição:**  
 Interface que estende JpaRepository para operações CRUD na entidade Item.
@@ -42,7 +51,7 @@ Interface que estende JpaRepository para operações CRUD na entidade Item.
 - `findById`
 - `delete`
 
-### ItemController
+### <span style="color:green">ItemController</span>
 
 **Descrição:**  
 Controladora que lida com requisições HTTP para a entidade Item, fornecendo endpoints para operações CRUD.
@@ -59,7 +68,7 @@ Controladora que lida com requisições HTTP para a entidade Item, fornecendo en
 - `@RequestMapping`: Mapeia requisições HTTP para métodos manipuladores.
 - `@Autowired`: Injeta automaticamente a dependência do repositório ItemRepository.
 
-### TerminalDeBuscaApplicationTests
+### <span style="color:green">TerminalDeBuscaApplicationTests</span>
 
 **Descrição:**  
 Classe de teste que verifica se o contexto da aplicação carrega corretamente.
