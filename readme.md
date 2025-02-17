@@ -1,6 +1,6 @@
 ## Documentação do Projeto Terminal de Busca
 
-![Imagem do Terminal](Imagemterminal.jpg)
+![Imagem do Terminal](Imagemterminal2.jpg)
 
 ### TerminalDeBuscaApplication
 
