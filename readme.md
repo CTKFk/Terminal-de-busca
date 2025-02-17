@@ -22,7 +22,11 @@ O projeto Terminal de Busca é uma aplicação Spring Boot que permite a gestão
 A classe principal que inicia a aplicação Spring Boot.
 
 **Método Principal:**  
-Contém o método `main`, ponto de entrada da aplicação.
+```java
+public static void main(String[] args) {
+    SpringApplication.run(TerminalDeBuscaApplication.class, args);
+}
+```
 
 **Anotações:**
 - `@SpringBootApplication`: Indica uma aplicação Spring Boot.
@@ -33,9 +37,14 @@ Contém o método `main`, ponto de entrada da aplicação.
 Representa um item com identificador, nome e preço. É uma entidade JPA mapeada para uma tabela de banco de dados.
 
 **Atributos:**
-- `id`: Identificador único, gerado automaticamente.
-- `name`: Nome do item.
-- `price`: Preço do item.
+```java
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
+
+private String name;
+private BigDecimal price;
+```
 
 **Métodos:**  
 Métodos getter e setter para acessar e modificar os atributos.
@@ -62,11 +71,47 @@ Interface que estende JpaRepository para operações CRUD na entidade Item.
 Controladora que lida com requisições HTTP para a entidade Item, fornecendo endpoints para operações CRUD.
 
 **Endpoints:**
-- `GET /api/items`: Retorna todos os itens.
-- `GET /api/items/{id}`: Retorna um item pelo identificador.
-- `POST /api/items`: Cria um novo item.
-- `PUT /api/items/{id}`: Atualiza um item existente.
-- `DELETE /api/items/{id}`: Deleta um item pelo identificador.
+```java
+@GetMapping("/api/items")
+public List<Item> getAllItems() {
+    return itemRepository.findAll();
+}
+
+@GetMapping("/api/items/{id}")
+public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+    Item item = itemRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Item not found"));
+    return ResponseEntity.ok(item);
+}
+
+@PostMapping("/api/items")
+public Item createItem(@RequestBody Item item) {
+    return itemRepository.save(item);
+}
+
+@PutMapping("/api/items/{id}")
+public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item itemDetails) {
+    Item item = itemRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Item not found"));
+
+    item.setName(itemDetails.getName());
+    item.setPrice(itemDetails.getPrice());
+
+    final Item updatedItem = itemRepository.save(item);
+    return ResponseEntity.ok(updatedItem);
+}
+
+@DeleteMapping("/api/items/{id}")
+public Map<String, Boolean> deleteItem(@PathVariable Long id) {
+    Item item = itemRepository.findById(id)
+        .orElseThrow(() -> new ResourceNotFoundException("Item not found"));
+
+    itemRepository.delete(item);
+    Map<String, Boolean> response = new HashMap<>();
+    response.put("deleted", Boolean.TRUE);
+    return response;
+}
+```
 
 **Anotações:**
 - `@RestController`: Indica um controlador REST.
@@ -79,7 +124,11 @@ Controladora que lida com requisições HTTP para a entidade Item, fornecendo en
 Classe de teste que verifica se o contexto da aplicação carrega corretamente.
 
 **Método de Teste:**
-- `contextLoads`: Testa se o contexto carrega sem problemas.
+```java
+@Test
+void contextLoads() {
+}
+```
 
 **Anotações:**
 - `@SpringBootTest`: Indica uma classe de teste Spring Boot.
