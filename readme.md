@@ -1,11 +1,16 @@
 ## Sumário
 
+- [Resumo do Projeto](#resumo-do-projeto)
 - [Documentação do Projeto Terminal de Busca](#documentação-do-projeto-terminal-de-busca)
     - [TerminalDeBuscaApplication](#terminaldebuscaapplication)
     - [Item](#item)
     - [ItemRepository](#itemrepository)
     - [ItemController](#itemcontroller)
     - [TerminalDeBuscaApplicationTests](#terminaldebuscaapplicationtests)
+
+## Resumo do Projeto
+
+O projeto Terminal de Busca é uma aplicação Spring Boot que permite a gestão de itens através de uma interface RESTful. Ele inclui funcionalidades para criar, ler, atualizar e deletar itens, que são armazenados em um banco de dados. A aplicação é composta por várias classes principais, incluindo a classe de inicialização, entidades JPA, repositórios e controladores. Além disso, há uma classe de testes para garantir que o contexto da aplicação seja carregado corretamente.
 
 ## <span style="color:blue">Documentação do Projeto Terminal de Busca</span>
 
